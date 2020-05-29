@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.loc1{
+			display: none;
+			left: 1000px;
+			top: 750px;
+			position: absolute;
+
+		}
+		.loc2{
+			display: none;
+		}
+	</style>
+</head>
+<body class="body" style="background-image: url(main.png)">
+	<button class="math">Math</button>
+	<button class="fizra">Fisculture</button>
+	<div class="loc1">
+	<button class="check">check</button>
+	<input class="input" type="" name="">
+	</div>
+	<div class="loc2">
+		<h1>Second:</h1>
+		<h1 class="timer">3</h1>
+		<button class="click">Click 5 raz</button>
+	</div>
+	<script type="text/javascript">
+		let input = document.querySelector(".input");
+		let ocenki = 0;
+		let jump = 0;
+		let val = 0;
+		let time = 3;
+		let loc1 = document.querySelector(".loc1");
+		let loc2 = document.querySelector(".loc2");
+		let math = document.querySelector(".math");
+		let fizra = document.querySelector(".fizra");
+		let body = document.querySelector(".body");
+		let click = document.querySelector(".click");
+		let check = document.querySelector(".check");
+		let timer = document.querySelector(".timer")
+		check.onclick = function(){
+			val = input.value
+			if (val == 1596) {
+				body.style.backgroundImage = "url(main.png)";
+				math.style.display = "none";
+				click.style.display = "block";
+				loc1.style.display = "none";
+				fizra.style.display = "block"
+				loc2.style.display = "none";
+				ocenki = ocenki + 1
+			}
+			else{
+				alert("you lose")
+			}
+			if (ocenki == 2) {
+				document.location.href = "index4.html"
+			}
+		}
+		math.onclick = function(){
+			body.style.backgroundImage = "url(math.jpg)";
+			math.style.display = "none"
+			fizra.style.display = "none"
+			loc1.style.display = "block"
+		}
+		fizra.onclick = function (){
+			body.style.backgroundImage = "url(play.gif)";
+			math.style.display = "none"
+			fizra.style.display = "none"
+			loc2.style.display = "block"
+			timer.innerHTML = time
+			let timing = function(){
+						time = time - 1
+						if (time == 0 & jump < 5) {
+							document.location.href = "index5.html"
+						}
+						timer.innerHTML = time;
+					}
+					setInterval(timing, 1000)
+		}
+		click.onclick = function(){
+			jump = jump + 1
+			if (jump == 5) {
+				body.style.backgroundImage = "url(main.png)";
+				math.style.display = "block";
+				click.style.display = "none";
+				ocenki = ocenki + 1;
+				loc2.style.display = "none"
+			}
+			if (ocenki == 2) {
+				document.location.href = "index4.html"
+			}
+		}
+	</script>
+</body>
+</html>
